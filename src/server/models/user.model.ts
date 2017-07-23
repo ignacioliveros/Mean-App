@@ -1,16 +1,9 @@
 import { Document, model, Mongoose, Schema, Types } from 'mongoose';
+import {IUser } from '../entities/user.entity';
 
-export interface IUser {
-    firstName: string;
-    lastName: string;
-    email: string;
-}
-
-export interface IUserModel extends IUser, Document {}
+export interface IUserDb extends IUser, Document {}
 
 const UserSchema = new Schema({
-    firstName: { type: String, required: true },
-    lastName: { type: String, required: true },
     email: {
         type: String,
         required: true,
@@ -21,4 +14,4 @@ const UserSchema = new Schema({
     },
 });
 
-export const UserModel = model<IUserModel>('User', UserSchema);
+export const UserModel = model<IUserDb>('User', UserSchema);
